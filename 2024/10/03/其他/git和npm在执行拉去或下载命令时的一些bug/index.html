@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		git和npm在执行拉去或下载命令时的一些bug | 
+	 
+	JesZon&#39;s Blog
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">JesZon's Blog</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+      <li class="menu-item">
+        <a href='https://github.com/JesZon' class="menu-item-link" target="_blank">
+          <i class="fa fa-github fa-2x"></i>
+        </a>
+      </li>
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SpringBoot3
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/SpringBoot3/SpringBoot3%E4%BD%BF%E7%94%A8mybatis-plus/">
+                     
+										    SpringBoot3使用mybatis-plus
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/09/26/SpringBoot3/SpringBoot3%E5%85%B3%E4%BA%8E%E6%97%A5%E5%BF%97%E7%9A%84%E9%85%8D%E7%BD%AE/">
+                     
+										    SpringBoot3关于日志的配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/Maven%E7%9A%84scope%E5%8F%82%E6%95%B0%E7%86%9F%E6%82%89/">
+                     
+										    Maven的scope参数熟悉
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/git%E5%92%8Cnpm%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%8B%89%E5%8E%BB%E6%88%96%E4%B8%8B%E8%BD%BD%E5%91%BD%E4%BB%A4%E6%97%B6%E7%9A%84%E4%B8%80%E4%BA%9Bbug/">
+                     
+										    git和npm在执行拉去或下载命令时的一些bug
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/java%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">
+                     
+										    java数据模型的命名方式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/%E5%AD%A6%E4%B9%A0selenium%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+                     
+										    学习selenium的基础操作（Java）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										慕测大赛遇到的问题
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">
+                     
+										    eclipse使用JaCoCo测试代码覆盖率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8maven/">
+                     
+										    eclipse配置使用maven
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/idea%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E9%94%99/">
+                     
+										    idea使用JaCoCo测试覆盖率报错
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										自动化财务办公软件后端
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF%EF%BC%88%E4%B8%80%EF%BC%89/">
+                     
+										    自动化财务办公软件后端（一）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	git和npm在执行拉去或下载命令时的一些bug
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>JesZon</span>
+	<span>2024-10-03 04:06:30</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="1-问题产生的原因"><a href="#1-问题产生的原因" class="headerlink" title="1.问题产生的原因"></a>1.问题产生的原因</h2><p><strong>在使用npm或者git下载包或者拉取项目是，我经常是在开启vpn的环境下去拉取或下载的，所以因为代理的问题，通常会导致拉取或下载时报错。</strong></p>
+<p><strong>例如：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">npm:</span><br><span class="line">npm ERR! code ECONNREFUSED</span><br><span class="line">npm ERR! syscall connect</span><br><span class="line">npm ERR! errno ECONNREFUSED</span><br><span class="line">npm ERR! FetchError: request to https://registry.npmjs.org/npm failed, reason: connect ECONNREFUSED 127.0.0.1:31181</span><br><span class="line">npm ERR!     at ClientRequest.&lt;anonymous&gt; (D:\softwarelnstall\nvm\v18.18.2\node_gobal\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)</span><br><span class="line">npm ERR!     at ClientRequest.emit (node:events:517:28)</span><br><span class="line">npm ERR!     at _destroy (node:_http_client:882:13)</span><br><span class="line">npm ERR!     at onSocketNT (node:_http_client:902:5)</span><br><span class="line">npm ERR!     at process.processTicksAndRejections (node:internal/process/task_queues:83:21)</span><br><span class="line">npm ERR!  FetchError: request to https://registry.npmjs.org/npm failed, reason: connect ECONNREFUSED 127.0.0.1:31181</span><br><span class="line">npm ERR!     at ClientRequest.&lt;anonymous&gt; (D:\softwarelnstall\nvm\v18.18.2\node_gobal\node_modules\npm\node_modules\minipass-fetch\lib\index.js:130:14)</span><br><span class="line">npm ERR!     at ClientRequest.emit (node:events:517:28)</span><br><span class="line">npm ERR!     at _destroy (node:_http_client:882:13)</span><br><span class="line">npm ERR!     at onSocketNT (node:_http_client:902:5)</span><br><span class="line">npm ERR!     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) &#123;</span><br><span class="line">npm ERR!   code: &#x27;ECONNREFUSED&#x27;,</span><br><span class="line">npm ERR!   errno: &#x27;ECONNREFUSED&#x27;,</span><br><span class="line">npm ERR!   syscall: &#x27;connect&#x27;,</span><br><span class="line">npm ERR!   address: &#x27;127.0.0.1&#x27;,</span><br><span class="line">npm ERR!   port: 31181,</span><br><span class="line">npm ERR!   type: &#x27;system&#x27;</span><br><span class="line">npm ERR! &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! If you are behind a proxy, please make sure that the</span><br><span class="line">npm ERR! &#x27;proxy&#x27; config is set properly.  See: &#x27;npm help config&#x27;</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in: D:\softwarelnstall\nodejs\node_cache\_logs\2024-09-07T07_50_59_291Z-debug-0.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git：</span><br><span class="line">fatal: unable to access &#x27;https://github.com/ppoffice/hexo-theme-icarus.git/&#x27;: HTTP/2 stream 1 was not closed cleanly before end of the underlying stream</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-具体原因分析"><a href="#2-具体原因分析" class="headerlink" title="2.具体原因分析"></a>2.具体原因分析</h2><h3 id="对于npm"><a href="#对于npm" class="headerlink" title="&lt;1&gt;.对于npm"></a>&lt;1&gt;.对于npm</h3><p><strong>报错表示 <code>npm</code> 试图连接 <code>127.0.0.1:31181</code>，但连接被拒绝（<code>ECONNREFUSED</code>）</strong></p>
+<p><strong>可能原因及解决方法：</strong></p>
+<ol>
+<li><p><strong>代理设置问题</strong>（&#x3D;&#x3D;基本上我都是这个原因&#x3D;&#x3D;）：可能配置了本地代理服务器，但该代理未正常运行或者配置错误。如果你不使用代理，可以通过以下命令清除 npm 的代理设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>本地防火墙或网络问题</strong>：防火墙可能阻止了 npm 访问外部网络。确保防火墙允许 <code>npm</code> 访问网络，或者尝试在不使用防火墙的环境中运行命令。</p>
+</li>
+<li><p><strong>npm 配置错误</strong>：可能是 <code>npm</code> 被配置为使用某个不存在或错误的代理。可以通过以下命令检查 npm 当前的配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>本地网络问题</strong>：检查你的网络连接是否正常，确保能够访问互联网，并且能够访问 <code>https://registry.npmjs.org/</code>（配置的下载服务器，如果是阿里云或其他的就使用其他的地址)。</p>
+</li>
+<li><p><strong>重置 npm 配置</strong>（无奈操作）：你可以尝试重置 <code>npm</code> 配置为默认值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config edit</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="对于git"><a href="#对于git" class="headerlink" title="&lt;2&gt;对于git"></a>&lt;2&gt;对于git</h3><p><strong>表示：这个 <code>git</code> 报错通常与网络连接问题或 SSL 配置有关，可能是由于以下原因导致的：</strong></p>
+<ol>
+<li><p><strong>网络不稳定或代理问题</strong></p>
+<p>网络连接中断或不稳定可能会导致这种错误。如果你使用了代理，尝试关闭代理再试。你可以临时禁用代理，使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>如果你在某些网络环境下必须使用代理，确保代理配置正确：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://proxyaddress:port</span><br><span class="line">git config --global https.proxy https://proxyaddress:port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>更换 Git 协议</strong></p>
+<p>尝试使用 <code>git</code> 的 <code>ssh</code> 协议来代替 <code>https</code>，这通常能绕过一些网络问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:ppoffice/hexo-theme-icarus.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>升级 Git</strong></p>
+<p>有时，旧版本的 <code>Git</code> 可能会引发与 HTTP&#x2F;2 相关的错误。你可以尝试升级 <code>Git</code> 到最新版本：</p>
+<ul>
+<li><p>Windows 用户可以通过<a target="_blank" rel="noopener" href="https://git-scm.com/">官方安装包</a>更新。</p>
+</li>
+<li><p>Linux 用户可以使用包管理器更新，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install git</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>调整 Git HTTP 版本</strong></p>
+<p>你可以尝试将 <code>Git</code> 的 HTTP 版本降级为 1.1（默认是 2.0），这样可能避免与 HTTP&#x2F;2 相关的问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.version HTTP/1.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>网络设置或 SSL 问题</strong></p>
+</li>
+</ol>
+<p>   如果你使用了自定义的 SSL 或网络配置，确保其正确性。你可以暂时关闭 SSL 验证以排查问题：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>   &#x3D;&#x3D;注意&#x3D;&#x3D;：关闭 SSL 验证是不安全的，只建议在排查问题时短暂使用。解决问题后请重新启用：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><p><strong>尝试更换网络环境</strong></p>
+<p>有时网络服务提供商的某些设置会导致这个问题。尝试在不同的网络环境（如使用手机热点、VPN等）下操作。</p>
+<p>如果问题持续，可以检查网络或服务器的响应状况，确保 GitHub 的服务没有中断。</p>
+</li>
+</ol>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2024/10/03/%E5%85%B6%E4%BB%96/java%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  java数据模型的命名方式
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/idea%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E9%94%99/">
+                idea使用JaCoCo测试覆盖率报错
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">JesZon</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

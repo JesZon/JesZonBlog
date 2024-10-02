@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Maven的scope参数熟悉 | 
+	 
+	JesZon&#39;s Blog
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">JesZon's Blog</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+      <li class="menu-item">
+        <a href='https://github.com/JesZon' class="menu-item-link" target="_blank">
+          <i class="fa fa-github fa-2x"></i>
+        </a>
+      </li>
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SpringBoot3
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/SpringBoot3/SpringBoot3%E4%BD%BF%E7%94%A8mybatis-plus/">
+                     
+										    SpringBoot3使用mybatis-plus
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/09/26/SpringBoot3/SpringBoot3%E5%85%B3%E4%BA%8E%E6%97%A5%E5%BF%97%E7%9A%84%E9%85%8D%E7%BD%AE/">
+                     
+										    SpringBoot3关于日志的配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/Maven%E7%9A%84scope%E5%8F%82%E6%95%B0%E7%86%9F%E6%82%89/">
+                     
+										    Maven的scope参数熟悉
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/git%E5%92%8Cnpm%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%8B%89%E5%8E%BB%E6%88%96%E4%B8%8B%E8%BD%BD%E5%91%BD%E4%BB%A4%E6%97%B6%E7%9A%84%E4%B8%80%E4%BA%9Bbug/">
+                     
+										    git和npm在执行拉去或下载命令时的一些bug
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/java%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">
+                     
+										    java数据模型的命名方式
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E5%85%B6%E4%BB%96/%E5%AD%A6%E4%B9%A0selenium%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+                     
+										    学习selenium的基础操作（Java）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										慕测大赛遇到的问题
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">
+                     
+										    eclipse使用JaCoCo测试代码覆盖率
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8maven/">
+                     
+										    eclipse配置使用maven
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/idea%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E9%94%99/">
+                     
+										    idea使用JaCoCo测试覆盖率报错
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										自动化财务办公软件后端
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2024/10/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF%EF%BC%88%E4%B8%80%EF%BC%89/">
+                     
+										    自动化财务办公软件后端（一）
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	Maven的scope参数熟悉
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>JesZon</span>
+	<span>2024-10-03 04:06:30</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="1-Maven中的scope属性用于指定项目依赖的使用范围，有五种属性"><a href="#1-Maven中的scope属性用于指定项目依赖的使用范围，有五种属性" class="headerlink" title="1.Maven中的scope属性用于指定项目依赖的使用范围，有五种属性"></a>1.Maven中的scope属性用于指定项目依赖的使用范围，有五种属性</h2><h3 id="1-compile默认的作用范围。依赖项在项目编译、测试、运行和打包阶段都可用。"><a href="#1-compile默认的作用范围。依赖项在项目编译、测试、运行和打包阶段都可用。" class="headerlink" title="1.compile默认的作用范围。依赖项在项目编译、测试、运行和打包阶段都可用。"></a>1.<strong>compile</strong>默认的作用范围。依赖项在项目编译、测试、运行和打包阶段都可用。</h3><ul>
+<li><p>使用场景：需要在项目的代码中直接使用的库。</p>
+</li>
+<li><p>包括在编译、测试、运行和打包的类路径中。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>example-lib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span> <span class="comment">&lt;!-- 默认，不需要显式声明 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-provided表示依赖在编译时需要，但运行时由外部环境提供（如应用服务器）。"><a href="#2-provided表示依赖在编译时需要，但运行时由外部环境提供（如应用服务器）。" class="headerlink" title="2.provided表示依赖在编译时需要，但运行时由外部环境提供（如应用服务器）。"></a>2.<strong>provided</strong>表示依赖在编译时需要，但运行时由外部环境提供（如应用服务器）。</h3><ul>
+<li>使用场景：适用于在开发时需要，但生产环境中已提供的库（如 Servlet API）。</li>
+<li>包括在编译和测试类路径中，但不包括在打包的类路径中。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-runtime依赖只在运行时需要，而不在编译时使用。"><a href="#3-runtime依赖只在运行时需要，而不在编译时使用。" class="headerlink" title="3.runtime依赖只在运行时需要，而不在编译时使用。"></a>3.<strong>runtime</strong>依赖只在运行时需要，而不在编译时使用。</h3><ul>
+<li>使用场景：适用于需要在运行时动态加载的库（如 JDBC 驱动）。</li>
+<li>不包括在编译类路径中，但包括在运行和测试类路径中。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>example-runtime-lib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-test依赖仅在测试阶段使用，编译和运行时不会使用。"><a href="#4-test依赖仅在测试阶段使用，编译和运行时不会使用。" class="headerlink" title="4.test依赖仅在测试阶段使用，编译和运行时不会使用。"></a>4.<strong>test</strong>依赖仅在测试阶段使用，编译和运行时不会使用。</h3><ul>
+<li>使用场景：测试框架（如 JUnit、Mockito）或测试工具的库。</li>
+<li>包括在测试类路径中，不包括在编译和运行类路径中。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-system与-provided-类似，但依赖项必须显式地在本地系统路径中提供。它不会从-Maven-仓库下载。"><a href="#5-system与-provided-类似，但依赖项必须显式地在本地系统路径中提供。它不会从-Maven-仓库下载。" class="headerlink" title="5.system与 provided 类似，但依赖项必须显式地在本地系统路径中提供。它不会从 Maven 仓库下载。"></a>5.<strong>system</strong>与 <code>provided</code> 类似，但依赖项必须显式地在本地系统路径中提供。它不会从 Maven 仓库下载。</h3><ul>
+<li>使用场景：特殊情况，例如需要指定本地的 JAR 文件。</li>
+<li>需要使用 <code>systemPath</code> 属性指定本地路径。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>example-lib<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;basedir&#125;/lib/example-lib-1.0.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-import（用于-）仅用于导入其他项目的依赖定义，常用于-BOM（Bill-of-Materials）。"><a href="#6-import（用于-）仅用于导入其他项目的依赖定义，常用于-BOM（Bill-of-Materials）。" class="headerlink" title="6.import（用于 &lt;dependencyManagement&gt;）仅用于导入其他项目的依赖定义，常用于 BOM（Bill of Materials）。"></a>6.<strong>import</strong>（用于 <code>&lt;dependencyManagement&gt;</code>）仅用于导入其他项目的依赖定义，常用于 BOM（Bill of Materials）。</h3><ul>
+<li>使用场景：常用于多模块项目或依赖管理，简化版本控制。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="示例图："><a href="#示例图：" class="headerlink" title="示例图："></a>示例图：</h3><p><img src="/%5Cimage%5Cimage-20240922153857725.png" alt="image-20240922153857725"></p>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2024/10/03/%E5%85%B6%E4%BB%96/%E5%AD%A6%E4%B9%A0selenium%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  学习selenium的基础操作（Java）
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2024/10/03/%E5%85%B6%E4%BB%96/java%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F/">
+                java数据模型的命名方式
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">JesZon</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
