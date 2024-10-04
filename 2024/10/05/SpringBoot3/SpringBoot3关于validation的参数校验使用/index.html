@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		eclipse配置使用maven | 
+		SpringBoot3关于validation的参数校验使用 | 
 	 
 	JesZon&#39;s Blog
 	</title>
@@ -130,7 +130,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/05/SpringBoot3/SpringBoot3%E5%85%B3%E4%BA%8Evalidation%E7%9A%84%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E4%BD%BF%E7%94%A8/">
                      
 										    SpringBoot3关于validation的参数校验使用
@@ -229,7 +229,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8maven/">
                      
 										    eclipse配置使用maven
@@ -283,7 +283,7 @@
 	<!-- 引入正文 -->
 	<div id="content" class="content">
 		<h1 id="article-title">
-	eclipse配置使用maven
+	SpringBoot3关于validation的参数校验使用
 </h1>
 
 <!-- meta -->
@@ -291,7 +291,7 @@
 	
 
 	<span>JesZon</span>
-	<span>2024-10-03 04:06:30</span>
+	<span>2024-10-05 00:32:53</span>
 
   <div id="article-categories">
     
@@ -309,20 +309,162 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="1-配置选项位置"><a href="#1-配置选项位置" class="headerlink" title="1.配置选项位置"></a>1.配置选项位置</h2><ol>
-<li><p>.<strong>eclipse顶部的导航栏开始。</strong></p>
-<p><strong>Window → Preferences → Maven → Installations → Add</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240924185926555.png" alt="image-20240924185926555"></p>
+	<h2 id="1-使用validation进行参数校验"><a href="#1-使用validation进行参数校验" class="headerlink" title="1.使用validation进行参数校验"></a>1.使用validation进行参数校验</h2><p><strong>环境搭建，maven添加依赖jar包</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-validation的常用注解"><a href="#2-validation的常用注解" class="headerlink" title="2.validation的常用注解"></a>2.validation的常用注解</h2><h3 id="1-空和非空检查"><a href="#1-空和非空检查" class="headerlink" title="1.空和非空检查"></a>1.空和非空检查</h3><table>
+<thead>
+<tr>
+<th align="center">注解</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@NotBlank</td>
+<td align="center">只能用于字符串不为 null ，并且字符串 .trim() 以后 length 要大于 0</td>
+</tr>
+<tr>
+<td align="center">@NotEmpty</td>
+<td align="center">集合对象的元素不为 0 ，即集合不为空</td>
+</tr>
+<tr>
+<td align="center">@NotNull</td>
+<td align="center">不能为 null</td>
+</tr>
+<tr>
+<td align="center">@Null</td>
+<td align="center">必须为 null</td>
+</tr>
+</tbody></table>
+<h3 id="2-数值检查"><a href="#2-数值检查" class="headerlink" title="2.数值检查"></a>2.数值检查</h3><table>
+<thead>
+<tr>
+<th align="center">注解</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@DecimalMax(value)</td>
+<td align="center">被注释的元素必须是一个数字，其值必须小于等于指定的最大值</td>
+</tr>
+<tr>
+<td align="center">@DecimalMin(value)</td>
+<td align="center">被注释的元素必须是一个数字，其值必须大于等于指定的最小值</td>
+</tr>
+<tr>
+<td align="center">@Digits(integer, fraction)</td>
+<td align="center">被注释的元素必须是一个数字，其值必须在可接受的范围内</td>
+</tr>
+<tr>
+<td align="center">@Positive</td>
+<td align="center">判断正数</td>
+</tr>
+<tr>
+<td align="center">@PositiveOrZero</td>
+<td align="center">判断正数或 0</td>
+</tr>
+<tr>
+<td align="center">@Max(value)</td>
+<td align="center">该字段的值只能小于或等于该值</td>
+</tr>
+<tr>
+<td align="center">@Min(value)</td>
+<td align="center">该字段的值只能大于或等于该值</td>
+</tr>
+<tr>
+<td align="center">@Negative</td>
+<td align="center">判断负数</td>
+</tr>
+<tr>
+<td align="center">@NegativeOrZero</td>
+<td align="center">判断负数或 0</td>
+</tr>
+</tbody></table>
+<h3 id="3-Boolean-值检查"><a href="#3-Boolean-值检查" class="headerlink" title="3.Boolean 值检查"></a>3.Boolean 值检查</h3><table>
+<thead>
+<tr>
+<th align="center">注解</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@AssertFalse</td>
+<td align="center">被注释的元素必须为 false</td>
+</tr>
+<tr>
+<td align="center">@AssertTrue</td>
+<td align="center">被注释的元素必须为 true</td>
+</tr>
+</tbody></table>
+<h3 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h3><table>
+<thead>
+<tr>
+<th align="center">注解</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@Size(max, min)</td>
+<td align="center">检查字段的 size 是否在 min 和 max 之间，可以是字符串、数组、集合、Map 等</td>
+</tr>
+<tr>
+<td align="center">@Future</td>
+<td align="center">被注释的元素必须是一个将来的日期</td>
+</tr>
+<tr>
+<td align="center">@FutureOrPresent</td>
+<td align="center">判断日期是否是将来或现在日期</td>
+</tr>
+<tr>
+<td align="center">@Past</td>
+<td align="center">检查该字段的日期是在过去</td>
+</tr>
+<tr>
+<td align="center">@PastOrPresent</td>
+<td align="center">判断日期是否是过去或现在日期</td>
+</tr>
+<tr>
+<td align="center">@Email</td>
+<td align="center">被注释的元素必须是电子邮箱地址</td>
+</tr>
+<tr>
+<td align="center">@Pattern(value)</td>
+<td align="center">被注释的元素必须符合指定的正则表达式</td>
+</tr>
+<tr>
+<td align="center">@Range(min&#x3D;, max&#x3D;)</td>
+<td align="center">被注释的元素必须在合适的范围内</td>
+</tr>
+<tr>
+<td align="center">@Length(min&#x3D;, max&#x3D;)</td>
+<td align="center">被注释的字符串的大小必须在指定的范围内</td>
+</tr>
+<tr>
+<td align="center">@URL(protocol&#x3D;,host&#x3D;,port&#x3D;,regexp&#x3D;,flags&#x3D;)</td>
+<td align="center">被注释的字符串必须是一个有效的 URL</td>
+</tr>
+<tr>
+<td align="center">@SafeHtml</td>
+<td align="center">判断提交的 HTML 是否安全。例如说，不能包含 javascript 脚本等等</td>
+</tr>
+</tbody></table>
+<h2 id="3-Valid和-Validated"><a href="#3-Valid和-Validated" class="headerlink" title="3.@Valid和 @Validated"></a>3.@Valid<code>和 </code>@Validated</h2><ul>
+<li><strong>@Valid 注解，是 Bean Validation 所定义，可以添加在普通方法、构造方法、方法参数、方法返回、成员变量上，表示它们需要进行约束校验。</strong></li>
+<li><strong>@Validated 注解，是 Spring Validation 锁定义，可以添加在类、方法参数、普通方法上，表示它们需要进行约束校验。同时，@Validated 有 value 属性，支持分组校验。</strong></li>
+</ul>
+<p><strong>只有添加了这两个注解，以上添加到变量上的注解才能生效，如果不使用这两个注解则可以才传入的参数上直接使用校验的注解也行</strong></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241005005229500.png" alt="image-20241005005229500"></p>
+<h2 id="4-自定义注解"><a href="#4-自定义注解" class="headerlink" title="4.自定义注解"></a>4.自定义注解</h2><ol>
+<li><p><strong>创建自定义注解</strong></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241005005446624.png" alt="image-20241005005446624"></p>
 </li>
-<li><p><strong>再将我们刚才添加的勾选上然后点击 Apply</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240924190141555.png" alt="image-20240924190141555"></p>
+<li><p><strong>创建校验逻辑类</strong></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241005005616550.png" alt="image-20241005005616550"></p>
 </li>
-<li><p><strong>设置Settings</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240924190309154.png" alt="image-20240924190309154"></p>
-<p><strong>配置完成</strong></p>
-</li>
-<li><p><strong>如果是导入的maven项目，择要经行一下操作</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240924190539133.png" alt="image-20240924190539133"></p>
+<li><p><strong>将注解添加到指定的类上就可以使用了</strong></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241005005718428.png" alt="image-20241005005718428"></p>
 </li>
 </ol>
 
@@ -333,16 +475,11 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  eclipse使用JaCoCo测试代码覆盖率
-              </a>
-            
         </div>
         <div class="item right">
             
-              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/SpringBoot3/SpringBoot3%E4%BD%BF%E7%94%A8mybatis-plus/">
-                SpringBoot3使用mybatis-plus
+              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%B4%A2%E5%8A%A1%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6%E5%90%8E%E7%AB%AF%EF%BC%88%E4%B8%80%EF%BC%89/">
+                自动化财务办公软件后端（一）
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
