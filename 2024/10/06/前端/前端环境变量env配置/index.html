@@ -9,7 +9,7 @@
 	
 	<title>
 	
-		idea使用JaCoCo测试覆盖率报错 | 
+		前端环境变量env配置 | 
 	 
 	JesZon&#39;s Blog
 	</title>
@@ -240,7 +240,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/06/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fenv%E9%85%8D%E7%BD%AE/">
                      
 										    前端环境变量env配置
@@ -284,7 +284,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/idea%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87%E6%8A%A5%E9%94%99/">
                      
 										    idea使用JaCoCo测试覆盖率报错
@@ -327,7 +327,7 @@
 	<!-- 引入正文 -->
 	<div id="content" class="content">
 		<h1 id="article-title">
-	idea使用JaCoCo测试覆盖率报错
+	前端环境变量env配置
 </h1>
 
 <!-- meta -->
@@ -335,7 +335,7 @@
 	
 
 	<span>JesZon</span>
-	<span>2024-10-03 04:06:30</span>
+	<span>2024-10-06 20:42:43</span>
 
   <div id="article-categories">
     
@@ -353,31 +353,50 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="1-使用JaCoCo"><a href="#1-使用JaCoCo" class="headerlink" title="1.使用JaCoCo"></a>1.使用JaCoCo</h2><ol>
-<li><p><strong>以IntelliJ IDEA 2024.1.3 (Ultimate Edition)为例。打开IDEA，点击左上角File，点击Settings。</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925213105450.png" alt="image-20240925213105450"></p>
+	<h2 id="1-创建环境变量文件"><a href="#1-创建环境变量文件" class="headerlink" title="1.创建环境变量文件"></a>1.创建环境变量文件</h2><p><strong>具体内容：</strong></p>
+<ul>
+<li><strong>[electron-vite](<a target="_blank" rel="noopener" href="https://cn.electron-vite.org/guide/env-and-mode">环境变量和模式 | electron-vite</a>)</strong></li>
+<li>[vite](<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode#modes">环境变量和模式 | Vite 官方中文文档 (vitejs.dev)</a>)</li>
+</ul>
+<p><strong>文件类型分为三种：</strong></p>
+<ul>
+<li><strong>.env.development（开发环境）</strong></li>
+<li><strong>.env.production（生产环境）</strong></li>
+<li><strong>.env.test（测试环境）</strong></li>
+</ul>
+<h3 id="1-针对环境变量设置规范（以electron-vite为例）"><a href="#1-针对环境变量设置规范（以electron-vite为例）" class="headerlink" title="1.针对环境变量设置规范（以electron-vite为例）"></a>1.针对环境变量设置规范（以electron-vite为例）</h3><ol>
+<li><p><strong>前缀规范</strong></p>
+<ul>
+<li><code>MAIN_VITE_</code>：仅主进程可用</li>
+<li><code>PRELOAD_VITE_</code>：用于预加载脚本</li>
+<li><code>RENDERER_VITE_</code>：用于渲染器</li>
+<li><code>VITE_</code>：所有进程可用</li>
+</ul>
 </li>
-<li><p><strong>在左上角搜索框中搜索coverage，点击Build, Execution,Deployment目录下的Coverage，将红框内的IntelliJ IDEA改为JaCoCo</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925213150226.png" alt="image-20240925213150226"></p>
+<li><p><strong>自定义规范</strong></p>
+<p>如果你想自定义 env 变量的前缀，可以使用 <code>envPrefix</code> 选项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// electron.vite.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">main</span>: &#123;</span><br><span class="line">    <span class="attr">envPrefix</span>: <span class="string">&#x27;M_VITE_&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>如果你是 TypeScript 用户，请确保在 <code>env.d.ts</code> 中添加 <code>import.meta.env</code> 的类型定义，以获取用户自定义环境变量的类型检查和智能感知。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span></span><br><span class="line"></span><br><span class="line">interface <span class="title class_">ImportMetaEnv</span> &#123;</span><br><span class="line">  readonly <span class="attr">MAIN_VITE_SOME_KEY</span>: string</span><br><span class="line">  <span class="comment">// more env variables...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface <span class="title class_">ImportMeta</span> &#123;</span><br><span class="line">  readonly <span class="attr">env</span>: <span class="title class_">ImportMetaEnv</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h3><ol>
+<li><p><strong>创建文件</strong></p>
+<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006205824928.png" alt="image-20241006205824928"></p>
 </li>
-<li><p><strong>在测试用例文件上鼠标右击，靠近More Run&#x2F;Debug，点击Run “xxx” with Coverage。之后出现右侧覆盖率表格。</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925213317438.png" alt="image-20240925213317438"></p>
-</li>
-<li><p><strong>查看JaCoCo覆盖率得分</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925213443839.png" alt="image-20240925213443839"></p>
+<li><p><strong>启动设置环境变量</strong></p>
+<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006210110336.png" alt="image-20241006210110336"></p>
 </li>
 </ol>
-<h2 id="2-报错解决"><a href="#2-报错解决" class="headerlink" title="2.报错解决"></a>2.报错解决</h2><p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925213647746.png" alt="image-20240925213647746"></p>
-<h3 id="1-报错原因"><a href="#1-报错原因" class="headerlink" title="1.报错原因"></a>1.报错原因</h3><p><strong>主要是因为电脑的用户名是中文的，所有会有乱码，在测试时找不到路径</strong></p>
-<h3 id="2-解决方法"><a href="#2-解决方法" class="headerlink" title="2.解决方法"></a>2.解决方法</h3><ol>
-<li><p><strong>将电脑用户名改回英文的用户名</strong></p>
-</li>
-<li><p><strong>编辑自定义虚拟机选项</strong></p>
-<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20240925214030797.png" alt="image-20240925214030797"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Djava.io.tmpdir=D:\Code\temp</span><br></pre></td></tr></table></figure>
+<h3 id="3-各个位置获取环境变量的方式（electron-vite为例，其他方式各异）"><a href="#3-各个位置获取环境变量的方式（electron-vite为例，其他方式各异）" class="headerlink" title="3.各个位置获取环境变量的方式（electron-vite为例，其他方式各异）"></a>3.各个位置获取环境变量的方式（electron-vite为例，其他方式各异）</h3><ol>
+<li><p><strong>electron.vite.config.ts</strong></p>
+<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006210600078.png" alt="image-20241006210600078"></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; resolve &#125; <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig, externalizeDepsPlugin ,loadEnv&#125; <span class="keyword">from</span> <span class="string">&#x27;electron-vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">cmd</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;mode&#125; = cmd;</span><br><span class="line">  <span class="keyword">const</span> env = <span class="title function_">loadEnv</span>(mode);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(env[<span class="string">&quot;VITE_URL&quot;</span>])</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">main</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">externalizeDepsPlugin</span>()]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">preload</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">externalizeDepsPlugin</span>()]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">renderer</span>: &#123;</span><br><span class="line">      <span class="attr">resolve</span>: &#123;</span><br><span class="line">        <span class="attr">alias</span>: &#123;</span><br><span class="line">          <span class="string">&#x27;@renderer&#x27;</span>: <span class="title function_">resolve</span>(<span class="string">&#x27;src/renderer/src&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">vue</span>()]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>设置好选项后，记得重启idea，要不然可能不会生效。</strong></p>
+
 </li>
+<li><p><strong>其他地方获取环境变量</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">env</span>[<span class="string">&#x27;VITE_URL&#x27;</span>]</span><br></pre></td></tr></table></figure></li>
 </ol>
 
 </div>
@@ -387,16 +406,11 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E5%85%B6%E4%BB%96/git%E5%92%8Cnpm%E5%9C%A8%E6%89%A7%E8%A1%8C%E6%8B%89%E5%8E%BB%E6%88%96%E4%B8%8B%E8%BD%BD%E5%91%BD%E4%BB%A4%E6%97%B6%E7%9A%84%E4%B8%80%E4%BA%9Bbug/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  git和npm在执行拉去或下载命令时的一些bug
-              </a>
-            
         </div>
         <div class="item right">
             
-              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/03/%E6%85%95%E6%B5%8B%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/eclipse%E4%BD%BF%E7%94%A8JaCoCo%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%8E%87/">
-                eclipse使用JaCoCo测试代码覆盖率
+              <a target="_blank" rel="noopener" href="https://jeszon.github.io/JesZonBlog/2024/10/06/%E5%89%8D%E7%AB%AF/node%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
+                node环境下控制台输出中文乱码
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
