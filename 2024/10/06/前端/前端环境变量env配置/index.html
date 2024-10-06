@@ -356,7 +356,7 @@
 	<h2 id="1-创建环境变量文件"><a href="#1-创建环境变量文件" class="headerlink" title="1.创建环境变量文件"></a>1.创建环境变量文件</h2><p><strong>具体内容：</strong></p>
 <ul>
 <li><strong>[electron-vite](<a target="_blank" rel="noopener" href="https://cn.electron-vite.org/guide/env-and-mode">环境变量和模式 | electron-vite</a>)</strong></li>
-<li>[vite](<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode#modes">环境变量和模式 | Vite 官方中文文档 (vitejs.dev)</a>)</li>
+<li><strong>[vite](<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode#modes">环境变量和模式 | Vite 官方中文文档 (vitejs.dev)</a>)</strong></li>
 </ul>
 <p><strong>文件类型分为三种：</strong></p>
 <ul>
@@ -382,15 +382,15 @@
 </ol>
 <h3 id="2-具体使用"><a href="#2-具体使用" class="headerlink" title="2.具体使用"></a>2.具体使用</h3><ol>
 <li><p><strong>创建文件</strong></p>
-<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006205824928.png" alt="image-20241006205824928"></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241006205824928.png" alt="image-20241006205824928"></p>
 </li>
 <li><p><strong>启动设置环境变量</strong></p>
-<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006210110336.png" alt="image-20241006210110336"></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241006210110336.png" alt="image-20241006210110336"></p>
 </li>
 </ol>
 <h3 id="3-各个位置获取环境变量的方式（electron-vite为例，其他方式各异）"><a href="#3-各个位置获取环境变量的方式（electron-vite为例，其他方式各异）" class="headerlink" title="3.各个位置获取环境变量的方式（electron-vite为例，其他方式各异）"></a>3.各个位置获取环境变量的方式（electron-vite为例，其他方式各异）</h3><ol>
 <li><p><strong>electron.vite.config.ts</strong></p>
-<p><img src="D:\Code\vscode\JesZonBlog\source_posts\前端\image\image-20241006210600078.png" alt="image-20241006210600078"></p>
+<p><img src="https://jeszon.github.io/JesZonBlog/image/image-20241006210600078.png" alt="image-20241006210600078"></p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; resolve &#125; <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig, externalizeDepsPlugin ,loadEnv&#125; <span class="keyword">from</span> <span class="string">&#x27;electron-vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">cmd</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;mode&#125; = cmd;</span><br><span class="line">  <span class="keyword">const</span> env = <span class="title function_">loadEnv</span>(mode);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(env[<span class="string">&quot;VITE_URL&quot;</span>])</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">main</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">externalizeDepsPlugin</span>()]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">preload</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">externalizeDepsPlugin</span>()]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">renderer</span>: &#123;</span><br><span class="line">      <span class="attr">resolve</span>: &#123;</span><br><span class="line">        <span class="attr">alias</span>: &#123;</span><br><span class="line">          <span class="string">&#x27;@renderer&#x27;</span>: <span class="title function_">resolve</span>(<span class="string">&#x27;src/renderer/src&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">plugins</span>: [<span class="title function_">vue</span>()]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
